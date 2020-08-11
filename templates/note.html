@@ -3,24 +3,28 @@
 {% block title %}Note{% endblock %}
 
 {% block content %}
-    <h1>{{ note.title }}</h1>
-    <h3>Written on {{ note.date }}</h3>
-    <p>{{ note.note_body }}</p>
-
-    <p>
-        <button>
-            <a href="{{ url_for('homepage') }}">Home</a>
-        </button>
-        {% if index < max_index %}
-            <button>
-                <a href="{{ url_for('view_note', index=index + 1) }}">Next Note</a>
+<div class="ui two column centered grid">
+    <div class="column"><div class="ui segment">
+        <h2 class="ui left floated header">{{ note.title }}</h2>
+        <div class="ui clearing divider"></div>
+        <p>Written on {{ note.date }}</p>
+        <p>{{ note.note_body }}</p>
+        <p>
+            <button class="ui button">
+                <a href="{{ url_for('homepage') }}">Home</a>
             </button>
-        {% else %}
-            <button>
-                <a href="{{ url_for('view_note', index=0) }}">Start Over</a>
-            </button>
-        {% endif %}
-    </p>
-    <a href="{{ url_for('remove_note', index=index)}}">Remove Note</a>
+            {% if index < max_index %}
+                <button class="ui button">
+                    <a href="{{ url_for('view_note', index=index + 1) }}">Next Note</a>
+                </button>
+            {% else %}
+                <button class="ui button">
+                    <a href="{{ url_for('view_note', index=0) }}">Start Over</a>
+                </button>
+            {% endif %}
+        </p>
+        <a href="{{ url_for('remove_note', index=index)}}">Remove Note</a>
+    </div>
+</div>
 
 {% endblock %}
