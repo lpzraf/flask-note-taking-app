@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Note{% endblock %}
+
+{% block content %}
+    <h1>{{ note.title }}</h1>
+    <h3>Written on {{ note.date }}</h3>
+    <p>{{ note.note_body }}</p>
+
+    <p>
+        <button>
+            <a href="{{ url_for('homepage') }}">Home</a>
+        </button>
+        {% if index < max_index %}
+            <button>
+                <a href="{{ url_for('view_note', index=index + 1) }}">Next Note</a>
+            </button>
+        {% else %}
+            <button>
+                <a href="{{ url_for('view_note', index=0) }}">Start Over</a>
+            </button>
+        {% endif %}
+    </p>
+    <a href="{{ url_for('remove_note', index=index)}}">Visit the Remove Note Page</a>
+
+{% endblock %}

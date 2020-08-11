@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+    <h1>Note-Taking App</h1>
+    <p>Current time: {{ date }} - <span id="clock"></span></p>
+
+    <ol> 
+        {% for note in notes %} 
+            <li>
+                <a href="{{ url_for('view_note', index=loop.index0) }}">{{note.title}}></a>
+            </li> 
+        {% endfor %} 
+    </ol> 
+    <a href="{{ url_for('add_note') }}">Add a new note.</a>
+{% endblock %}

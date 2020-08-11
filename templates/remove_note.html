@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Remove a note{% endblock %}
+
+{% block content %}
+    <h1>Remove a Note</h1>
+    Title: {{ note.title }}
+    Date: {{ note.date }}
+
+    <h2>Are you sure?</h2>
+    <form method="POST">
+        <button type="submit">Yes</button>
+        <a href="{{ url_for('homepage') }}">No</a>
+    </form>
+{% endblock %}
