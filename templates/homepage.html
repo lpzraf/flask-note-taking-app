@@ -3,15 +3,20 @@
 {% block title %}Homepage{% endblock %}
 
 {% block content %}
-    <h1>Note-Taking App</h1>
-    <p>Current time: {{ date }} - <span id="clock"></span></p>
+    <div class="ui two column centered grid">
+        <div class="column"><div class="ui segment">
+            <h2 class="ui left floated header">Note-Taking App</h2>
+            <div class="ui clearing divider"></div>
+            <p>{{ date }} - <span id="clock"></span></p>
+            <ol> 
+                {% for note in notes %} 
+                    <li>
+                        <a href="{{ url_for('view_note', index=loop.index0) }}">{{note.title}}</a>
+                    </li> 
+                {% endfor %} 
+            </ol> 
+            <button class="ui circular button"><a href="{{ url_for('add_note') }}">Add a New Note</a></button>
+        </div>
+    </div>
 
-    <ol> 
-        {% for note in notes %} 
-            <li>
-                <a href="{{ url_for('view_note', index=loop.index0) }}">{{note.title}}></a>
-            </li> 
-        {% endfor %} 
-    </ol> 
-    <a href="{{ url_for('add_note') }}">Add a new note.</a>
 {% endblock %}

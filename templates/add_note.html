@@ -3,29 +3,29 @@
 {% block title %}Add a note{% endblock %}
 
 {% block content %}
-<div class="ui two column centered grid">
-    <div class="column"><div class="ui segment">
-        <h2 class="ui left floated header">Add Note</h2>
-        <div class="ui clearing divider"></div>
-        <p>What are you thinking today?</p>
+    <div class="ui two column centered grid">
+        <div class="column"><div class="ui segment">
+            <h2 class="ui left floated header">Add Note</h2>
+            <div class="ui clearing divider"></div>
+            <p>What are you thinking today?</p>
 
-    <form class="ui form" method="POST">
-        <div class="field">
-          <label>Note Title</label>
-          <input type="text" name="title" placeholder="Add a note title...">
+        <form class="ui form" method="POST">
+            <div class="field">
+            <label>Note Title</label>
+            <input type="text" name="title" placeholder="Add a note title...">
+            </div>
+            <div class="field">
+            <label>Date</label>
+            <input type="text" name="date" placeholder="Add a date...">
+            </div>
+            <div class="field">
+            <label>Short Description: </label>
+            <textarea rows="2" type="text" name="note_body" placeholder="Add a short description..."></textarea>
+            </div>
+            <button class="ui button" type="submit">Save</button>
+        </form>
         </div>
-        <div class="field">
-          <label>Date</label>
-          <input type="text" name="date" placeholder="Add a date...">
-        </div>
-        <div class="field">
-          <label>Short Description: </label>
-          <textarea rows="2" type="text" name="note_body" placeholder="Add a short description..."></textarea>
-        </div>
-        <button class="ui button" type="submit">Save</button>
-      </form>
     </div>
-</div>
 
 {% endblock %}
 
