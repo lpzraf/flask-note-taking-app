@@ -3,11 +3,27 @@
 {% block title %}Add a note{% endblock %}
 
 {% block content %}
-    <h1>Add Note</h1>
-    <form method="POST">
-        <p>Title: <input type="text" name="title"></p>
-        <p>Date: <input type="text" name="date"></p>
-        <p>Note: <textarea rows="3" cols="30" name="note_body"></textarea></p>
-        <button type="submit">Save</button>
-    </form>
+<div class="ui segment">
+    <h2 class="ui left floated header">Add Note</h2>
+    <div class="ui clearing divider"></div>
+    <p>What are you thinking today?</p>
+
+    <form class="ui form" method="POST">
+        <div class="field">
+          <label>Note Title</label>
+          <input type="text" name="title" placeholder="Title...">
+        </div>
+        <div class="field">
+          <label>Date</label>
+          <input type="text" name="date" placeholder="Date...">
+        </div>
+        <div class="field">
+          <label>Short Description: </label>
+          <textarea rows="2" type="text" name="note_body" placeholder="Short description..."></textarea>
+        </div>
+        <button class="ui button" type="submit">Save</button>
+      </form>
+</div>
+
 {% endblock %}
+
