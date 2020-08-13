@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Profile page{% endblock %}
+
+{% block content %}
+<div class="ui centered link card">
+    <div class="image">
+      <img src="/static/matthew.png">
+    </div>
+    <div class="content">
+      <a class="header">Hi {{ g.user.username }}!</a>
+      <div class="meta">
+        <span class="date">Joined in 2013</span>
+      </div>
+      <div class="description">
+        Click to see your notes.
+      </div>
+    </div>
+    <div class="extra content">
+      <a>
+        <i class="user icon"></i>
+        22 Friends
+      </a>
+    </div>
+  </div>
+
+{% endblock %}

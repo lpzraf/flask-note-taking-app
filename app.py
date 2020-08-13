@@ -1,9 +1,20 @@
-from flask import Flask, render_template, request, abort, redirect, url_for, jsonify
+from flask import (Flask, render_template, request, abort, 
+                    redirect, url_for, jsonify,session,g)
 from model import db, save_db
 import datetime
 
 
 app = Flask(__name__)
+app.secret_key = 'supermegadupersecretkey'
+
+# session
+@app.before_request
+def before_request():
+    g.user = None
+
+    if 'user_id' in session:
+        user = [x for x in users if x.id == session['user_id']][0]
+        g.user = user
 
 # homepage
 @app.route('/')
@@ -51,13 +62,43 @@ def remove_note(index):
     except IndexError:
         abort(404)
 
-# @app.route('/api/note/')
-# def api_note_list():
-#     return jsonify(db)
+class User:
+    def __init__(self,id,username,password):
+        self.id = id
+        self.username = username
+        self.password = password
 
-# @app.route('/api/note/<int:index>')
-# def api_note_detail(index):
-#     try:
-#         return db[index]
-#     except IndexError:
-#         abort(404)
+    def __repr__(self):
+        return f'<User: {self.username}>'
+
+users = []
+users.append(User(id=1, username='Rafa', password='password'))
+users.append(User(id=2, username='Cristina', password='password2'))
+users.append(User(id=3, username='Kelly', password='password3'))
+
+
+# login
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        session.pop('user_id', None)
+
+        username = request.form['username']
+        password = request.form['password']
+
+        user = [x for x in users if x.username == username][0]
+        if user and user.password == password:
+            session['user_id'] = user.id
+            return redirect(url_for('profile'))
+
+        return redirect(url_for('login'))
+
+    return render_template('login.html')
+
+# profile
+@app.route('/profile')
+def profile():
+    if not g.user:
+        return redirect(url_for('login'))
+
+    return render_template('profile.html')

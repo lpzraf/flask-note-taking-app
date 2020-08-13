@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Login page.{% endblock %}
+
+{% block content %}
+    <div class="ui two column centered grid">
+        <div class="column"><div class="ui segment">
+            <h2 class="ui left floated header"><i class="pencil alternate icon"></i>Note-Taking App</h2>
+            <div class="ui clearing divider"></div>
+            <p>Please add your login info below.</p>
+
+        <form class="ui form" method="POST">
+            <div class="field">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Add your username...">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="text" name="password" placeholder="Add your password...">
+            </div>
+            <button class="ui button" type="submit">Login</button>
+        </form>
+        </div>
+    </div>
+
+{% endblock %}
