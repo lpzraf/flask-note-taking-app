@@ -1,10 +1,48 @@
 body {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(246,234,19,0.9934348739495799) 0%, rgba(0,255,6,1) 100%);
-    /* background: rgb(246,234,19);
-background: linear-gradient(21deg, rgba(246,234,19,0.9934348739495799) 34%, rgba(0,255,6,1) 100%); */
 }
 
-/* br {
-    padding-top: 75px;
-} */
+/* navbar */
+nav {
+    background-color: transparent;
+    margin: 0;
+    overflow: hidden;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    list-style-type: none;
+}
+
+nav ul li a {
+    color: white;
+    background-color: transparent;
+    display: block;
+    line-height: 3em;
+    padding: 1em 3em;
+    text-decoration: none;
+}
+
+nav ul li a.logo {
+    background-color: transparent;
+}
+
+nav ul li a:hover {
+    background-color: blue;
+}
+
+nav li {
+    float: right;
+}
+
+nav li:first-child {
+    float: left;
+}

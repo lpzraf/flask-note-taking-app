@@ -49,7 +49,7 @@ def view_note(index):
             note = {"title": request.form['title'],
                 "date": request.form['date'],  
                 "note_body": request.form['note_body']}
-            db.append(note)
+            db[index] = note
             save_db()
             return redirect(url_for('notes'))
         
