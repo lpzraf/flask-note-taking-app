@@ -11,7 +11,7 @@
             <p>{{ note.note_body }}</p>
             <p>
                 <button class="ui button">
-                    <a href="{{ url_for('homepage') }}">Home</a>
+                    <a href="{{ url_for('edit_note', index=index) }}">Edit</a>
                 </button>
                 {% if index < max_index %}
                     <button class="ui button">
@@ -24,6 +24,7 @@
                 {% endif %}
             </p>
             <a href="{{ url_for('remove_note', index=index)}}">Remove Note</a>
+            <a href="{{ url_for('notes')}}">Home</a>
         </div>
     </div>
 

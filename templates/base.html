@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-    <br>
-    {% block content %}
-    {% endblock %}
-<script type=text/javascript src="{{url_for('static', filename='scripts.js') }}"></script>
-</body>
+    <body>
+        <br>
+        {% block content %}
+        {% endblock %}
+    <script type=text/javascript src="{{url_for('static', filename='scripts.js') }}"></script>
+    </body>
 </html>

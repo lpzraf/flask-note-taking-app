@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Edit this note{% endblock %}
+
+{% block content %}
+    <div class="ui two column centered grid">
+        <div class="column"><div class="ui segment">
+            <h2 class="ui left floated header"><i class="pencil alternate icon"></i>Add Note</h2>
+            <div class="ui clearing divider"></div>
+            <p>What are you thinking today?</p>
+    
+            <form class="ui form" action="{{url_for('view_note', index=index)}}?_method=PATCH" method="POST">
+                <div class="field">
+                    <label>Note Title</label>
+                    <input type="text" name="title" value="{{ note.title }}">
+                </div>
+                <div class="field">
+                    <label>Date</label>
+                    <input type="text" name="date" value="{{ note.date }}">
+                </div>
+                <div class="field">
+                    <label>Short Description: </label>
+                    <textarea rows="2" type="text" name="note_body" value="{{ note.note_body }}"></textarea>
+                </div>
+                <button class="ui button" type="submit">Save</button>
+            </form>
+            <form action="{{url_for('view_note', index=index)}}?_method=DELETE" method="POST">
+                <button class="ui button" type="submit" value="Delete">Delete</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
