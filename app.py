@@ -31,6 +31,7 @@ def notes():
 # adding a note
 @app.route('/notes/new', methods=["GET", "POST"])
 def add_note():
+    global date
     if request.method == "POST":
         note = {"title": request.form['title'],
                 "date": request.form['date'],  
@@ -39,7 +40,7 @@ def add_note():
         save_db()
         return redirect(url_for('view_note', index=len(db) - 1))
     else:
-        return render_template("add_note.html")
+        return render_template("add_note.html", date=date)
 
 # viewing a note
 @app.route('/notes/<int:index>', methods=['GET', 'PATCH', 'DELETE'])
