@@ -9,6 +9,8 @@ app = Flask(__name__)
 app.secret_key = 'supermegadupersecretkey'
 modus = Modus(app)
 
+date = datetime.datetime.now().strftime('%A, %b %d, %Y')
+
 # session
 @app.before_request
 def before_request():
@@ -21,7 +23,7 @@ def before_request():
 # notes homepage
 @app.route('/notes')
 def notes():
-    date = datetime.datetime.now().strftime('%A, %b %d, %Y')
+    global date
     return render_template('notes.html', 
                             date=date,
                             notes=db)
@@ -71,11 +73,13 @@ def view_note(index):
 @app.route('/notes/<int:index>/edit')
 def edit_note(index):
     try:
+        global date
         note = db[index]
         return render_template("edit.html", 
                                 note=note,
                                 index=index,
-                                max_index= len(db)-1)
+                                max_index= len(db)-1,
+                                date=date)
     except IndexError:
         abort(404)
 
