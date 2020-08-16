@@ -17,24 +17,24 @@
 
                 {% if index == 0 %}
         
-                    <button class="ui button">Back Note</button>
+                    <button class="ui button">Back</button>
                     <button class="ui button">
-                        <a href="{{ url_for('view_note', index=index + 1) }}">Next Note</a>
+                        <a href="{{ url_for('view_note', index=index + 1) }}">Next</a>
                     </button> 
                 
                 {% elif index > 0 and index < max_index%}
                 
                     <button class="ui button">
-                        <a href="{{ url_for('view_note', index=index - 1) }}">Back Note</a>
+                        <a href="{{ url_for('view_note', index=index - 1) }}">Back</a>
                     </button>
                     <button class="ui button">
-                        <a href="{{ url_for('view_note', index=index + 1) }}">Next Note</a>
+                        <a href="{{ url_for('view_note', index=index + 1) }}">Next</a>
                     </button>        
               
                 {% else %}
                     
                     <button class="ui button">
-                        <a href="{{ url_for('view_note', index=index - 1) }}">Back Note</a>
+                        <a href="{{ url_for('view_note', index=index - 1) }}">Back</a>
                     </button>
                     <button class="ui button">
                         <a href="{{ url_for('view_note', index=0) }}">Start Over</a>
