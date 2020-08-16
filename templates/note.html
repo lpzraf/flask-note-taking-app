@@ -5,7 +5,7 @@
 {% block content %}
     <div class="ui two column centered grid">
         <div class="column"><div class="ui segment">
-            <h2 class="ui left floated header">{{ note.title }}</h2>
+            <h2 class="ui left floated header">{{ index + 1 }}. {{ note.title }}</h2>
             <div class="ui clearing divider"></div>
             <h5>Written on {{ note.date }}</h5>
             <p>{{ note.note_body }}</p>
@@ -13,14 +13,32 @@
                 <button class="ui button">
                     <a href="{{ url_for('edit_note', index=index) }}">Edit</a>
                 </button>
-                {% if index < max_index %}
+
+                {% if index == 0 %}
+        
+                    <button class="ui button">Back Note</button>
                     <button class="ui button">
                         <a href="{{ url_for('view_note', index=index + 1) }}">Next Note</a>
+                    </button> 
+                
+                {% elif index > 0 and index < max_index%}
+                
+                    <button class="ui button">
+                        <a href="{{ url_for('view_note', index=index - 1) }}">Back Note</a>
                     </button>
+                    <button class="ui button">
+                        <a href="{{ url_for('view_note', index=index + 1) }}">Next Note</a>
+                    </button>        
+              
                 {% else %}
+                    
+                    <button class="ui button">
+                        <a href="{{ url_for('view_note', index=index - 1) }}">Back Note</a>
+                    </button>
                     <button class="ui button">
                         <a href="{{ url_for('view_note', index=0) }}">Start Over</a>
                     </button>
+                
                 {% endif %}
             </p>
             <a href="{{ url_for('remove_note', index=index)}}">Remove Note</a>
