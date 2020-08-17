@@ -22,5 +22,10 @@
 4. Buttons
 5. Nav
 
-Whats next?
+### Run
+1. Fork and git clone the repo
+2. Cd to the main directory
+3. Run `FLASK_APP=app.py FLASK_ENV=development flask run`
+
+### Whats next?
 1. Build a similar app connecting data to PostgreSQL.
