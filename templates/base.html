@@ -11,8 +11,8 @@
         <nav>
             <ul>
                 <li><a href="{{ url_for('notes')}}" class="logo">Home</a></li>
-                <li><a href="#">Sign Out</a></li>
-                <li><a href="#">Account</a></li>
+                <li><a href="{{ url_for('logout')}}">Sign Out</a></li>
+                <li><a href="{{ url_for('profile')}}">Profile</a></li>
                 <li><a href="#">About</a></li>
             </ul>
         </nav>

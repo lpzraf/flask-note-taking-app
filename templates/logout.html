@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Account sign out.{% endblock %}
+
+{% block content %}
+    <div class="ui two column centered grid">
+        <div class="column"><div class="ui segment">
+            <h2 class="ui left floated header"><i class="pencil alternate icon"></i>Account Sign Out</h2>
+            <div class="ui clearing divider"></div>
+            <p>{{ date }}</p>
+            <p>Hey {{ g.user.username }},</p>
+            <h2>Are you sure?</h2>
+            <form method="POST">
+                <button type="submit" class="ui red button">Yes</button>
+                <a href="{{ url_for('profile') }}">No</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
