@@ -1,6 +1,6 @@
 ## Note-Taking App built with Python Flask
 
-Built this app to practice:
+### Built this app to practice:
 1. CRUD
 2. RESTful practices
 3. Routing with Flask
@@ -9,13 +9,13 @@ Built this app to practice:
 6. User login and logout
 7. Faking a databse saving data in json format
 
-Tech
+### Tech
 1. Python Flask
 2. Jinja2
 3. Vanilla JavaScript
 4. Segment.ui for CSS
 
-Modules
+### Modules
 1. Forms
 2. Cards
 3. Lists
@@ -23,4 +23,4 @@ Modules
 5. Nav
 
 Whats next?
-1. Built a similar app connecting data to PostgreSQL.
+1. Build a similar app connecting data to PostgreSQL.
