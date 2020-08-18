@@ -17,6 +17,9 @@ date = datetime.datetime.now().strftime('%A, %b %d, %Y')
 @app.route('/notes')
 def notes():
     global date
+    if not g.user:
+        return redirect(url_for('login'))
+    
     return render_template('notes.html', 
                             date=date,
                             notes=db)
@@ -25,6 +28,9 @@ def notes():
 @app.route('/notes/new', methods=["GET", "POST"])
 def add_note():
     global date
+    if not g.user:
+        return redirect(url_for('login'))
+
     if request.method == "POST":
         note = {"title": request.form['title'],
                 "date": request.form['date'],  
@@ -38,6 +44,9 @@ def add_note():
 # viewing a note
 @app.route('/notes/<int:index>', methods=['GET', 'PATCH', 'DELETE'])
 def view_note(index):
+    if not g.user:
+        return redirect(url_for('login'))
+
     try:
         note = db[index]
         # if updating a note
@@ -66,6 +75,9 @@ def view_note(index):
 # edit a note
 @app.route('/notes/<int:index>/edit')
 def edit_note(index):
+    if not g.user:
+        return redirect(url_for('login'))
+
     try:
         global date
         note = db[index]
@@ -80,6 +92,9 @@ def edit_note(index):
 # removing a note 
 @app.route('/remove_note/<int:index>', methods=["GET", "POST"])
 def remove_note(index):
+    if not g.user:
+        return redirect(url_for('login'))
+        
     try:
         if request.method == "POST":
             del db[index]
