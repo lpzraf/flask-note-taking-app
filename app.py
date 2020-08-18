@@ -4,8 +4,7 @@ from flask_modus import Modus
 from user import User
 from model import db, save_db, user_db, save_user_db
 import datetime
-from random import seed, random
-
+import random
 
 app = Flask(__name__)
 app.secret_key = 'supermegadupersecretkey'
@@ -94,7 +93,7 @@ def edit_note(index):
 def remove_note(index):
     if not g.user:
         return redirect(url_for('login'))
-        
+
     try:
         if request.method == "POST":
             del db[index]
@@ -161,8 +160,7 @@ def profile():
 def add_user():
     global date
     if request.method == "POST":
-        seed(1)
-        user = {"id": random(),
+        user = {"id": random.randint(0,10000),
                 "username": request.form['username'],  
                 "password": request.form['password']}
         session['user_id'] = user['id']
