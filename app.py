@@ -4,9 +4,7 @@ from flask_modus import Modus
 from user import User
 from model import db, save_db, user_db, save_user_db
 import datetime
-
-from random import seed
-from random import random
+from random import seed, random
 
 
 app = Flask(__name__)
@@ -92,6 +90,7 @@ def remove_note(index):
     except IndexError:
         abort(404)
 
+
 # session
 @app.before_request
 def before_request():
@@ -99,23 +98,8 @@ def before_request():
 
     if 'user_id' in session:
         global user_db
-        # user = [x for x in user_db if x['id'] == session['user_id']][0]
         user = [x for x in user_db if x['id'] == session['user_id']][0]
         g.user = user
-
-# class User:
-#     def __init__(self,id,username,password):
-#         self.id = id
-#         self.username = username
-#         self.password = password
-
-#     def __repr__(self):
-#         return f'<User: {self.username}>'
-
-users = []
-users.append(User(id=1, username='Rafa', password='password'))
-users.append(User(id=2, username='Cristina', password='password2'))
-users.append(User(id=3, username='Kelly', password='password3'))
 
 
 # login
@@ -127,14 +111,15 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        user = [x for x in users if x.username == username][0]
-        if user and user.password == password:
-            session['user_id'] = user.id
+        user = [x for x in user_db if x['username'] == username][0]
+        if user and user['password'] == password:
+            session['user_id'] = user['id']
             return redirect(url_for('profile'))
 
         return redirect(url_for('login'))
 
     return render_template('login.html')
+
 
 # logout
 @app.route('/logout', methods=['GET', 'POST'])
@@ -145,6 +130,7 @@ def logout():
         return redirect(url_for('login'))
     else:
         return render_template('logout.html', date=date)
+
 
 # profile
 @app.route('/profile')
@@ -171,12 +157,14 @@ def add_user():
     
     return render_template("add_user.html", date=date)
 
+
 #protected
 @app.route('/protected')
 def protected():
     if g.user:
         return render_template('protected.html')
     return redirect(url_for('login'))
+
 
 # drop session
 @app.route('/dropsession')

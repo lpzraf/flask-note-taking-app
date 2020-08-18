@@ -22,7 +22,7 @@
 4. Buttons
 5. Nav
 
-### Run
+### Run it!
 1. Fork and git clone the repo
 2. Cd to the main directory
 3. Run `FLASK_APP=app.py FLASK_ENV=development flask run`
