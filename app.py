@@ -190,3 +190,5 @@ def dropsession():
     session.pop('user_id', None)
     return 'Dropped!'
 
+if __name__ == '__main__':
+    app.run(debug=True)
