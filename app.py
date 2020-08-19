@@ -159,7 +159,7 @@ def profile():
 
     return render_template('profile.html')
 
-# new 
+
 # creating a user
 @app.route('/users/new', methods=["GET", "POST"])
 def add_user():
