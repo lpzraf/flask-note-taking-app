@@ -12,6 +12,11 @@ modus = Modus(app)
 
 date = datetime.datetime.now().strftime('%A, %b %d, %Y')
 
+# about
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 # notes homepage
 @app.route('/notes')
 def notes():
