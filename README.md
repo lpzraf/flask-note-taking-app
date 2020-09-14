@@ -25,7 +25,9 @@
 ### Run it!
 1. Fork and git clone the repo
 2. Cd to the main directory
-3. Run `FLASK_APP=app.py FLASK_ENV=development flask run`
+3. Get into the venv running source venv/bin/activate
+4. Run `FLASK_APP=app.py FLASK_ENV=development flask run`
+5. Visit http://127.0.0.1:5000/login
 
 ### Whats next?
 1. Build a similar app connecting data to PostgreSQL.
